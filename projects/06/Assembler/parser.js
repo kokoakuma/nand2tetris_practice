@@ -1,13 +1,13 @@
-import fs from 'fs';
-import path from 'path';
-import module from './constant.js';
+const fs = require('fs');
+const path = require("path");
 
-const { A_COMMAND, C_COMMAND, L_COMMAND } = module;
+const { A_COMMAND, C_COMMAND, L_COMMAND } = require('./constant');
+
 
 class Parser {
   constructor(filePath) {
     const fileContent = fs.readFileSync(path.resolve(__dirname, filePath), {encoding: 'utf-8'});
-    const lines = fileContent.replace(/ /g, ''.split(/\r\n/))
+    const lines = fileContent.replace(/ /g, '').split(/\r\n/);
     this.instructions = lines.filter((line) => {
       return line !== '' && line.indexOf('//') !== 0
     })
@@ -60,7 +60,7 @@ class Parser {
       throw new Error('commandType should be C when call comp');
     }
     if (this.currentCommand.indexOf(';') !== -1) {
-      return this.currentCommand.split('=')[0];
+      return this.currentCommand.split(';')[0];
     }
     return this.currentCommand.split('=')[1];
   }
@@ -72,3 +72,5 @@ class Parser {
     return this.currentCommand.split(';')[1];
   }
 }
+
+module.exports = Parser;

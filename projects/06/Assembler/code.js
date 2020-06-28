@@ -45,18 +45,18 @@ class Code {
 
     let d1, d2, d3;
     if (mnemonic.indexOf('A') === -1) {
-      d1 = 0;
+      d1 = '0';
     } else {
-      d1 = 1;
+      d1 = '1';
     }
     if (mnemonic.indexOf('D') === -1) {
-      d2 = 0;
+      d2 = '0';
     } else {
-      d2 = 1;
+      d2 = '1';
     }if (mnemonic.indexOf('M') === -1) {
-      d3 = 0;
+      d3 = '0';
     } else {
-      d3 = 1;
+      d3 = '1';
     }
     return d1 + d2 + d3;
   }
@@ -71,4 +71,4 @@ class Code {
   }
 }
 
-export { Code };
+module.exports = Code;
